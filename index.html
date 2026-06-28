@@ -220,6 +220,36 @@
     .nav-links a { font-size:.72rem; }
     .contact-box { padding:1.5rem 1rem; }
   }
+  /* LIGHTBOX */
+  .lightbox-overlay { display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,20,.92); align-items:center; justify-content:center; flex-direction:column; gap:1rem; }
+  .lightbox-overlay.open { display:flex; }
+  .lightbox-overlay img { max-width:92vw; max-height:82vh; border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,.6); pointer-events:none; user-select:none; -webkit-user-drag:none; }
+  .lightbox-caption { color:#e2e8f0; font-size:.9rem; font-style:italic; text-align:center; max-width:600px; }
+  .lightbox-close { position:fixed; top:1.5rem; right:1.8rem; background:var(--magenta); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; z-index:1001; }
+  .lightbox-close:hover { background:#8b4090; }
+  .infog-card { cursor:zoom-in; }
+
+  /* DOCUMENTS */
+  #documents { background:var(--white); }
+  .docs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.4rem; max-width:1200px; margin:0 auto; }
+  .doc-card { background:var(--off-white); border:1px solid var(--lilac); border-radius:var(--radius); overflow:hidden; transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s; box-shadow:0 2px 12px rgba(43,47,90,.05); text-decoration:none; display:block; }
+  .doc-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(43,47,90,.13); }
+  .doc-header { padding:1.8rem 1.5rem 1rem; display:flex; align-items:center; gap:1rem; }
+  .doc-icon { width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
+  .doc-icon.pdf { background:#fff0f0; }
+  .doc-icon.word { background:#f0f4ff; }
+  .doc-icon.excel { background:#f0fff4; }
+  .doc-icon.mag { background:#fdf4ff; }
+  .doc-icon.guide { background:#fffbf0; }
+  .doc-type { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.2rem; }
+  .doc-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:.95rem; color:var(--navy); line-height:1.35; }
+  .doc-body { padding:0 1.5rem 1.5rem; }
+  .doc-desc { font-size:.85rem; color:var(--text-muted); line-height:1.65; margin-bottom:.8rem; }
+  .doc-footer { display:flex; align-items:center; justify-content:space-between; }
+  .doc-date { font-size:.75rem; color:var(--lavender); font-style:italic; }
+  .doc-btn { font-size:.72rem; font-weight:700; font-family:'Montserrat',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--magenta); }
+  .doc-empty { grid-column:1/-1; text-align:center; padding:3rem; color:var(--text-muted); font-style:italic; border:2px dashed var(--lilac); border-radius:var(--radius); }
+
   @media (prefers-reduced-motion:reduce) {
     .hero-photo,.hero-photo-wrap::before,.hero::after { animation:none; }
     .reveal,.reveal-left,.reveal-right { transition:none; opacity:1; transform:none; }
@@ -236,6 +266,7 @@
     <li><a href="#experience">Expérience</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#productions">Productions</a></li>
+    <li><a href="#documents">Documents</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -567,31 +598,76 @@
     <!-- INFOGRAPHIES -->
     <div class="prod-panel" id="panel-infographies">
       <div class="infog-grid">
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16527.jpg" alt="Mission Mindzi" loading="lazy"></div><div class="infog-info"><div class="infog-title">Mission de terrain — Village de Mindzi</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16526.jpg" alt="Mission Elarmilo" loading="lazy"></div><div class="infog-info"><div class="infog-title">Mission de terrain — Village d'Elarmilo</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
-        <div class="infog-card reveal delay-3"><div class="infog-img-wrap"><img src="infog-16528.jpg" alt="Mission Ngoumessi" loading="lazy"></div><div class="infog-info"><div class="infog-title">Mission de terrain — Ngoumessi, Mitzic</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16669.jpg" alt="Sensibilisation numérique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Sensibilisation numérique — oct. 2023 / mars 2024</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16667.jpg" alt="Le ménage n'est pas genré" loading="lazy"></div><div class="infog-info"><div class="infog-title">Le ménage, une notion de base — pas une tâche genrée</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
-        <div class="infog-card reveal delay-3"><div class="infog-img-wrap"><img src="infog-16568.jpg" alt="Site Citoyennes Engagées" loading="lazy"></div><div class="infog-info"><div class="infog-title">Site Citoyennes Engagées — Renforcer le pouvoir des femmes</div><div class="infog-meta">citoyennesengagees.org</div></div></div>
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16663.jpg" alt="L'amour ne fait pas mal" loading="lazy"></div><div class="infog-info"><div class="infog-title">L'amour ne fait pas mal — lutte contre les VBG</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16569.jpg" alt="Interface desktop" loading="lazy"></div><div class="infog-info"><div class="infog-title">Plateforme Citoyennes Engagées — Interface desktop</div><div class="infog-meta">citoyennesengagees.org</div></div></div>
-        <div class="infog-card reveal delay-3"><div class="infog-img-wrap"><img src="infog-16665.jpg" alt="66% violences" loading="lazy"></div><div class="infog-info"><div class="infog-title">66% des victimes de violences physiques sont des femmes</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16570.jpg" alt="Lancement officiel" loading="lazy"></div><div class="infog-info"><div class="infog-title">Lancement officiel — citoyennesengagees.org, nov. 2022</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16633.jpg" alt="Violence psychologique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Les cicatrices de la violence psychologique sont profondes</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
-        <div class="infog-card reveal delay-3"><div class="infog-img-wrap"><img src="infog-16679.jpg" alt="AOC participation politique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Action Orientée Changement — Participation politique des femmes</div><div class="infog-meta">ReFLeT · UNOCA · 2023</div></div></div>
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16674.jpg" alt="Festisol présentation" loading="lazy"></div><div class="infog-info"><div class="infog-title">Festival des Solidarités — Présentation & Actions</div><div class="infog-meta">Festisol Gabon · ReFLeT</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16673.jpg" alt="Festisol souvenirs" loading="lazy"></div><div class="infog-info"><div class="infog-title">Festisol — Souvenirs et plaquette de présentation</div><div class="infog-meta">Festisol Gabon</div></div></div>
-        <div class="infog-card reveal delay-3"><div class="infog-img-wrap"><img src="infog-16566.jpg" alt="Réinsertion prisonniers" loading="lazy"></div><div class="infog-info"><div class="infog-title">Festisol 2022 — Réinsertion des jeunes prisonniers</div><div class="infog-meta">Festival des Solidarités · Gabon</div></div></div>
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16685.webp" alt="Approche genre harcèlement" loading="lazy"></div><div class="infog-info"><div class="infog-title">Approche genre & harcèlement en milieu professionnel</div><div class="infog-meta">ReFLeT · Société Bouzguenda Frères</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16682.jpg" alt="Partenaires AOC" loading="lazy"></div><div class="infog-info"><div class="infog-title">Partenaires de mise en œuvre — ReFLeT, ID, UNOCA</div><div class="infog-meta">AOC · 2023</div></div></div>
-        <div class="infog-card reveal delay-3"><div class="infog-img-wrap"><img src="infog-16544.jpg" alt="Causerie-débat femmes politique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Causerie-débat — Faut-il plus de femmes engagées en politique ?</div><div class="infog-meta">ReFLeT · UNOCA</div></div></div>
-        <div class="infog-card reveal delay-1"><div class="infog-img-wrap"><img src="infog-16540.jpg" alt="Causerie-débat jour 1" loading="lazy"></div><div class="infog-info"><div class="infog-title">Causerie-débat Jour 1 — Sensibilisation au genre (nov. 2023)</div><div class="infog-meta">ReFLeT · UNOCA</div></div></div>
-        <div class="infog-card reveal delay-2"><div class="infog-img-wrap"><img src="infog-16529.jpg" alt="AG ReFLeT 2024" loading="lazy"></div><div class="infog-info"><div class="infog-title">Assemblée Générale ReFLeT — avril 2024</div><div class="infog-meta">Réseau Femme Lève-Toi</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16527.jpg" alt="Mission Mindzi" loading="lazy"></div><div class="infog-info"><div class="infog-title">Mission de terrain — Village de Mindzi</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16526.jpg" alt="Mission Elarmilo" loading="lazy"></div><div class="infog-info"><div class="infog-title">Mission de terrain — Village d'Elarmilo</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
+        <div class="infog-card reveal delay-3" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16528.jpg" alt="Mission Ngoumessi" loading="lazy"></div><div class="infog-info"><div class="infog-title">Mission de terrain — Ngoumessi, Mitzic</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16669.jpg" alt="Sensibilisation numérique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Sensibilisation numérique — oct. 2023 / mars 2024</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16667.jpg" alt="Le ménage n'est pas genré" loading="lazy"></div><div class="infog-info"><div class="infog-title">Le ménage, une notion de base — pas une tâche genrée</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
+        <div class="infog-card reveal delay-3" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16568.jpg" alt="Site Citoyennes Engagées" loading="lazy"></div><div class="infog-info"><div class="infog-title">Site Citoyennes Engagées — Renforcer le pouvoir des femmes</div><div class="infog-meta">citoyennesengagees.org</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16663.jpg" alt="L'amour ne fait pas mal" loading="lazy"></div><div class="infog-info"><div class="infog-title">L'amour ne fait pas mal — lutte contre les VBG</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16569.jpg" alt="Interface desktop" loading="lazy"></div><div class="infog-info"><div class="infog-title">Plateforme Citoyennes Engagées — Interface desktop</div><div class="infog-meta">citoyennesengagees.org</div></div></div>
+        <div class="infog-card reveal delay-3" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16665.jpg" alt="66% violences" loading="lazy"></div><div class="infog-info"><div class="infog-title">66% des victimes de violences physiques sont des femmes</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16570.jpg" alt="Lancement officiel" loading="lazy"></div><div class="infog-info"><div class="infog-title">Lancement officiel — citoyennesengagees.org, nov. 2022</div><div class="infog-meta">Citoyennes Engagées · ReFLeT</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16633.jpg" alt="Violence psychologique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Les cicatrices de la violence psychologique sont profondes</div><div class="infog-meta">Citoyennes Engagées</div></div></div>
+        <div class="infog-card reveal delay-3" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16679.jpg" alt="AOC participation politique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Action Orientée Changement — Participation politique des femmes</div><div class="infog-meta">ReFLeT · UNOCA · 2023</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16674.jpg" alt="Festisol présentation" loading="lazy"></div><div class="infog-info"><div class="infog-title">Festival des Solidarités — Présentation & Actions</div><div class="infog-meta">Festisol Gabon · ReFLeT</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16673.jpg" alt="Festisol souvenirs" loading="lazy"></div><div class="infog-info"><div class="infog-title">Festisol — Souvenirs et plaquette de présentation</div><div class="infog-meta">Festisol Gabon</div></div></div>
+        <div class="infog-card reveal delay-3" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16566.jpg" alt="Réinsertion prisonniers" loading="lazy"></div><div class="infog-info"><div class="infog-title">Festisol 2022 — Réinsertion des jeunes prisonniers</div><div class="infog-meta">Festival des Solidarités · Gabon</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16685.webp" alt="Approche genre harcèlement" loading="lazy"></div><div class="infog-info"><div class="infog-title">Approche genre & harcèlement en milieu professionnel</div><div class="infog-meta">ReFLeT · Société Bouzguenda Frères</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16682.jpg" alt="Partenaires AOC" loading="lazy"></div><div class="infog-info"><div class="infog-title">Partenaires de mise en œuvre — ReFLeT, ID, UNOCA</div><div class="infog-meta">AOC · 2023</div></div></div>
+        <div class="infog-card reveal delay-3" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16544.jpg" alt="Causerie-débat femmes politique" loading="lazy"></div><div class="infog-info"><div class="infog-title">Causerie-débat — Faut-il plus de femmes engagées en politique ?</div><div class="infog-meta">ReFLeT · UNOCA</div></div></div>
+        <div class="infog-card reveal delay-1" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16540.jpg" alt="Causerie-débat jour 1" loading="lazy"></div><div class="infog-info"><div class="infog-title">Causerie-débat Jour 1 — Sensibilisation au genre (nov. 2023)</div><div class="infog-meta">ReFLeT · UNOCA</div></div></div>
+        <div class="infog-card reveal delay-2" onclick="openLightbox(this)"><div class="infog-img-wrap"><img src="infog-16529.jpg" alt="AG ReFLeT 2024" loading="lazy"></div><div class="infog-info"><div class="infog-title">Assemblée Générale ReFLeT — avril 2024</div><div class="infog-meta">Réseau Femme Lève-Toi</div></div></div>
       </div>
     </div>
 
   </div>
 </section>
+
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div style="max-width:1200px;margin:0 auto;">
+    <p class="section-label reveal">Ressources</p>
+    <h2 class="section-title reveal delay-1">Documents</h2>
+    <div class="divider reveal delay-2"></div>
+    <p class="section-intro reveal delay-2">Modèles, guides, magazines et outils produits par <strong>IMAGYNE</strong> — <em>mis à disposition progressivement.</em></p>
+    <div class="docs-grid">
+
+      <!-- EXEMPLE — à remplacer par tes vrais documents -->
+      <a href="doc-exemple-guide.pdf" target="_blank" class="doc-card reveal delay-1">
+        <div class="doc-header">
+          <div class="doc-icon guide">📘</div>
+          <div>
+            <div class="doc-type">Guide</div>
+            <div class="doc-title">Guide de communication pour ONG</div>
+          </div>
+        </div>
+        <div class="doc-body">
+          <p class="doc-desc">Méthodologie et bonnes pratiques pour structurer la communication d'une organisation.</p>
+          <div class="doc-footer">
+            <span class="doc-date">2024</span>
+            <span class="doc-btn">Consulter →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- ESPACE RÉSERVÉ — retire ce bloc quand tu auras de vrais documents -->
+      <div class="doc-empty reveal delay-2">
+        📂 <strong>D'autres documents arrivent bientôt.</strong><br><br>
+        <em>PDF, Word, Excel, magazines et guides seront ajoutés progressivement.</em>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -667,6 +743,32 @@
       setTimeout(() => el.classList.add('visible'), 60);
     });
   }
+
+  // LIGHTBOX
+  function openLightbox(card) {
+    const img = card.querySelector('img');
+    const title = card.querySelector('.infog-title');
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    document.getElementById('lightbox-caption').textContent = title ? title.textContent : '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (!e || e.target !== document.getElementById('lightbox-img')) {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  // Disable right-click on lightbox image
+  document.getElementById('lightbox-img').addEventListener('contextmenu', e => e.preventDefault());
+  // Disable right-click on all infog images
+  document.querySelectorAll('.infog-img-wrap img').forEach(img => {
+    img.addEventListener('contextmenu', e => e.preventDefault());
+    img.setAttribute('draggable', 'false');
+  });
+
 </script>
 </body>
 </html>
